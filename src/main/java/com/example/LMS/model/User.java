@@ -12,12 +12,8 @@ import javax.persistence.*;
         )
 )
 
-@Entity
-@Data
-@NoArgsConstructor
-@AllArgsConstructor
+@Entity @Data @NoArgsConstructor @AllArgsConstructor
 public class User {
-
     @Id
     @GeneratedValue(strategy= GenerationType.IDENTITY)
     private Integer id;
@@ -26,5 +22,4 @@ public class User {
     private String password;
 
     private String role;
-
 }

@@ -1,13 +1,19 @@
 package com.example.LMS.model;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import lombok.AllArgsConstructor;
 import lombok.NoArgsConstructor;
 import javax.persistence.Entity;
+import javax.persistence.OneToMany;
+import java.util.ArrayList;
+import java.util.List;
 
-@Entity
-@NoArgsConstructor
-@AllArgsConstructor
+@Entity @NoArgsConstructor @AllArgsConstructor
 public class Lecturer extends User{
+
+    @JsonIgnore
+    @OneToMany(mappedBy = "lecturer")
+    private List<Course> conductingCourses = new ArrayList<>();
 
     public Lecturer(User user) {
         super.setId(user.getId());
@@ -17,4 +23,7 @@ public class Lecturer extends User{
         super.setRole(user.getRole());
     }
 
+    public List<Course> getConductingCourses() {
+        return conductingCourses;
+    }
 }
