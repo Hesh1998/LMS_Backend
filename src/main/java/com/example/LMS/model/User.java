@@ -6,11 +6,7 @@ import lombok.NoArgsConstructor;
 
 import javax.persistence.*;
 
-@Table(
-        uniqueConstraints = @UniqueConstraint(
-                columnNames = {"email"}
-        )
-)
+
 
 @Entity @Data @NoArgsConstructor @AllArgsConstructor
 public class User {
@@ -22,4 +18,11 @@ public class User {
     private String password;
 
     private String role;
+
+    public User(String name, String email, String password, String role) {
+        this.name = name;
+        this.email = email;
+        this.password = password;
+        this.role = role;
+    }
 }
